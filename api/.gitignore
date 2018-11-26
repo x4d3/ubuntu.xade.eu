@@ -25,3 +25,8 @@
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
+
+shared/*
+!shared/log/.keep
+!shared/pids/.keep
+!shared/log/.keep
