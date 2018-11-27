@@ -2,9 +2,6 @@
 Description=Puma HTTP Server
 After=network.target
 
-# Uncomment for socket activation (see below)
-# Requires=puma.socket
-
 [Service]
 # Foreground process (do not use --daemon in ExecStart or config.rb)
 Type=simple
@@ -19,10 +16,7 @@ WorkingDirectory=/home/rails/ubuntu.xade.eu/api
 # Helpful for debugging socket activation, etc.
 # Environment=PUMA_DEBUG=1
 
-# The command to start Puma. This variant uses a binstub generated via
-# `bundle binstubs puma --path ./sbin` in the WorkingDirectory
-# (replace "<WD>" below)
-ExecStart=/home/rails/ubuntu.xade.eu/api/sbin/puma -C /home/rails/ubuntu.xade.eu/api/config/puma/production.rb
+ExecStart=/usr/bin/bash -lc 'sbin/puma -e production -C config/puma/production.rb'
 
 
 Restart=always
