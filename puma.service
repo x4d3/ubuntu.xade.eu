@@ -22,7 +22,7 @@ WorkingDirectory=/home/rails/ubuntu.xade.eu/api
 # The command to start Puma. This variant uses a binstub generated via
 # `bundle binstubs puma --path ./sbin` in the WorkingDirectory
 # (replace "<WD>" below)
-ExecStart=/home/rails/ubuntu.xade.eu/api/sbin/puma -C config.rb
+ExecStart=/home/rails/ubuntu.xade.eu/api/sbin/puma -C /home/rails/ubuntu.xade.eu/api/config/puma/production.rb
 
 
 Restart=always
