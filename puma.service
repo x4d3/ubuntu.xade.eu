@@ -1,24 +1,14 @@
 [Unit]
-Description=Puma HTTP Server
-After=network.target
+Description=AppName
+Requires=network.target
 
 [Service]
-# Foreground process (do not use --daemon in ExecStart or config.rb)
 Type=simple
-
-# Preferably configure a non-privileged user
 User=rails
-
-# The path to the puma application root
-# Also replace the "<WD>" place holders below with this path.
 WorkingDirectory=/home/rails/ubuntu.xade.eu/api
-
-# Helpful for debugging socket activation, etc.
-# Environment=PUMA_DEBUG=1
-
-ExecStart=/bin/bash -lc 'sbin/puma -e production -C config/puma/production.rb'
-
-
+ExecStart=/bin/bash -lc 'bundle exec puma -e production -C config/puma/production.rb'
+TimeoutSec=60s
+RestartSec=30s
 Restart=always
 
 [Install]
