@@ -16,7 +16,7 @@ WorkingDirectory=/home/rails/ubuntu.xade.eu/api
 # Helpful for debugging socket activation, etc.
 # Environment=PUMA_DEBUG=1
 
-ExecStart=/usr/bin/bash -lc 'sbin/puma -e production -C config/puma/production.rb'
+ExecStart=/bin/bash -lc 'sbin/puma -e production -C config/puma/production.rb'
 
 
 Restart=always
