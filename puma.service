@@ -1,12 +1,21 @@
 [Unit]
-Description=AppName
+Description=Puma
 Requires=network.target
 
 [Service]
+Environment=RAILS_ENV=production
 Type=simple
 User=rails
 WorkingDirectory=/home/rails/ubuntu.xade.eu/api
-ExecStart=/bin/bash -lc 'bundle exec puma -e production -C config/puma/production.rb'
+ExecStart=/home/rails/.rbenv/bin/rbenv exec bundle exec puma -C config/puma/production.rb config.ru start
+ExecStop=/home/rails/.rbenv/bin/rbenv exec bundle exec pumactl -S /tmp/puma.state stop
+TimeoutSec=15
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
+
+
 TimeoutSec=60s
 RestartSec=30s
 Restart=always
