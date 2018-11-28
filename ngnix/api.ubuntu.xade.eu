@@ -1,6 +1,6 @@
 upstream app {
     # Path to Puma SOCK file, as defined previously
-    server unix:/home/rails/ubuntu.xade.eu/api/shared/sockets/puma.sock fail_timeout=0;
+    server unix:/tmp/puma.sock fail_timeout=0;
 }
 
 server {
