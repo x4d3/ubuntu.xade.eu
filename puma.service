@@ -3,7 +3,7 @@ Description=Puma
 Requires=network.target
 
 [Service]
-Environment=RAILS_ENV=production
+EnvironmentFile=/home/rails/env
 Type=simple
 User=rails
 WorkingDirectory=/home/rails/ubuntu.xade.eu/api
