@@ -2,6 +2,6 @@
 
 class HealthcheckController < ApplicationController
   def show
-    render json: { ok: true }
+    render json: { ok: true, timestamp: Time.now }
   end
 end
