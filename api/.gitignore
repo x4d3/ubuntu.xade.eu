@@ -21,12 +21,11 @@
 /storage/*
 !/storage/.keep
 
+/node_modules
+/yarn-error.log
+
+/public/assets
 .byebug_history
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
-
-shared/*
-!shared/log/.keep
-!shared/pids/.keep
-!shared/log/.keep
