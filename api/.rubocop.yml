@@ -1,0 +1,58 @@
+AllCops:
+  DisplayStyleGuide: true
+  TargetRubyVersion: 2.5
+  Exclude:
+  - '**/node_modules/**/*'
+  - 'bin/*'
+
+Documentation:
+  Enabled: false
+
+Metrics/AbcSize:
+  Enabled: false
+
+Metrics/BlockLength:
+  Enabled: false
+
+Metrics/ClassLength:
+  Enabled: false
+
+Metrics/LineLength:
+  Enabled: false
+
+Metrics/MethodLength:
+  Enabled: false
+
+Metrics/ModuleLength:
+  Enabled: false
+
+Metrics/ParameterLists:
+  CountKeywordArgs: false
+
+Lint/AmbiguousBlockAssociation:
+  Enabled: false
+
+Naming/BinaryOperatorParameterName:
+  Enabled: false
+
+Naming/UncommunicativeMethodParamName:
+  Enabled: false
+
+Style/FrozenStringLiteralComment:
+  Exclude:
+  - '**/ci/**/pipeline.rb'
+
+Style/HashSyntax:
+  Exclude:
+  - '**/*.rake'
+  - '**/Rakefile'
+  EnforcedStyle: ruby19
+
+Style/Lambda:
+  EnforcedStyle: literal
+
+Style/StderrPuts:
+  Enabled: false
+
+Style/StringLiterals:
+  EnforcedStyle: double_quotes
