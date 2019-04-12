@@ -1,10 +1,14 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  get "/auth/:provider/callback", to: "sessions#create"
-  get "auth/failure", to: redirect("/")
-  delete "signout", to: "sessions#destroy", as: "signout"
   root to: "sessions#new"
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  get "healthcheck", to: "healthcheck#show"
+
+  resources :youtube
+  post "/youtube/download"
+  get "/dl/:id", to: "youtube#get", as: "get"
+
+  get "/auth/:provider/callback", to: "sessions#create"
+  get "/auth/failure", to: redirect("/")
+  delete "/signout", to: "sessions#destroy", as: "signout"
+  get "/healthcheck", to: "healthcheck#index"
 end

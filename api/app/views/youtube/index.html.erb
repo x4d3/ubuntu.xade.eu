@@ -1,0 +1,25 @@
+<%= form_tag("youtube/download", method: "post") do %>
+  <%= token_tag %>
+  <%= label_tag(:url, "Youtube URL:") %>
+  <%= text_field_tag(:url) %>
+  <%= check_box_tag 'is_audio' %>
+  <%= submit_tag("Download") %>
+<% end %>
+
+<table>
+  <tr>
+    <th>Status</th>
+    <th>URL</th>
+    <th>Filename</th>
+  </tr>
+
+  <% @youtube_downloads.each do |youtube_dl| %>
+    <tr>
+      <td><%= youtube_dl.status %></td>
+      <td><%= youtube_dl.url %></td>
+      <td><%= youtube_dl.filename %></td>
+      <td><%= link_to('Download', get_path(youtube_dl.uid)) if youtube_dl.filename %></td>
+      <td><%= link_to 'Delete', youtube_path(youtube_dl), :method => :delete %></td>
+    </tr>
+  <% end %>
+</table>
