@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class YoutubeController < ApplicationController
-  before_action :logged_in_user
+  before_action :logged_in_user, except: :get
 
   def logged_in_user
     redirect_to root_path unless current_user
@@ -18,7 +18,7 @@ class YoutubeController < ApplicationController
   end
 
   def get
-    youtube = current_user.youtube_downloads.find_by!(uid: params[:id])
+    youtube = YoutubeDownload.find_by!(uid: params[:id])
     send_file(
       youtube.file_path,
       filename: youtube.filename + "." + youtube.extension,

@@ -7,9 +7,24 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   </head>
 
   <body>
+  <!-- beginning of new code -->
+  <nav>
+    <div class="nav-wrapper blue-grey darken-1">
+      <a href="#" class="brand-logo center">Tools</a>
+      <ul id="nav-mobile" class="left hide-on-med-and-down">
+        <li><%= link_to 'Main', '/' %></li>
+        <li><%= link_to 'Youtube Downloads', '/youtube' if current_user %></li>
+      </ul>
+    </div>
+  </nav>
+  <!-- end of new code -->
+
+  <div class="container">  <!-- newly added code -->
     <%= yield %>
+  </div>                   <!-- newly added code -->
   </body>
 </html>

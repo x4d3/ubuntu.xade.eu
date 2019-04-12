@@ -1,12 +1,10 @@
 <% if current_user.blank? %>
-  <h1>Please Sign In</h1>
-  <%= link_to 'Sign In with Github', '/auth/github' %>
+  <p>Please Sign In</p>
+  <%= link_to 'Sign In with Github', '/auth/github', class: "waves-effect waves-light btn" %>
 <% else %>
   <p>
     You are signed in as <%= current_user.username %>.  Click the button below to sign out.
   </p>
 
-  <%= link_to 'Youtube Downloads', '/youtube' %>
-
-  <%= button_to "Sign Out", signout_path, method: :delete %>
+  <%= link_to "Sign Out", signout_path, method: :delete, class: "waves-effect waves-light btn" %>
 <% end %>
