@@ -21,7 +21,13 @@ server {
         proxy_pass http://app;
         proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
         proxy_set_header Host $http_host;
-        proxy_redirect off;
+        proxy_set_header X-Sendfile-Type X-Accel-Redirect;
+        proxy_set_header X-Accel-Mapping /home/rails/ubuntu.xade.eu/api/=/__send_file_accel/;
+    }
+
+    location /__send_file_accel {
+      internal;
+      alias /home/rails/ubuntu.xade.eu/api/;
     }
 
     error_page 500 502 503 504 /500.html;
