@@ -18,7 +18,7 @@
       <td><%= youtube_dl.status %></td>
       <td><%= youtube_dl.url %></td>
       <td><%= youtube_dl.filename %></td>
-      <td><%= link_to('Download', get_path(youtube_dl.uid)) if youtube_dl.filename %></td>
+      <td><%= link_to('Download', get_path(youtube_dl.uid, youtube_dl.download_name)) if youtube_dl.filename %></td>
       <td><%= link_to 'Delete', youtube_path(youtube_dl), :method => :delete %></td>
     </tr>
   <% end %>

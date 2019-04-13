@@ -26,6 +26,10 @@ class YoutubeDownload < ApplicationRecord
     "#{file_prefix}.#{extension}"
   end
 
+  def download_name
+    "#{filename.parameterize}.#{extension}"
+  end
+
   def http_type
     is_audio ? "audio/mp3" : "video/mp4"
   end

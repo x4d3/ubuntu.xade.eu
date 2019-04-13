@@ -5,7 +5,7 @@ Rails.application.routes.draw do
 
   resources :youtube
   post "/youtube/download"
-  get "/dl/:id", to: "youtube#get", as: "get"
+  get "/dl/:id/:filename", to: "youtube#get", as: "get"
 
   get "/auth/:provider/callback", to: "sessions#create"
   get "/auth/failure", to: redirect("/")
