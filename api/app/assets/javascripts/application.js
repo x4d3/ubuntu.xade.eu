@@ -12,11 +12,12 @@
 //
 //= require rails-ujs
 //= require activestorage
-//= require turbolinks
 //= require_tree .
 //= require materialize
+//= require materialize/extras/nouislider
 
 document.addEventListener('DOMContentLoaded', function() {
-  var elems = document.querySelectorAll('.sidenav');
-  var instances = M.Sidenav.init(elems);
+  const elems = document.querySelectorAll('.sidenav');
+   M.Sidenav.init(elems);
 });
+

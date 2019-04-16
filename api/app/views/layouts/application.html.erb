@@ -14,8 +14,8 @@
   <!-- beginning of new code -->
   <nav>
     <div class="nav-wrapper blue-grey darken-1">
-      <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons">menu</i></a>
-      <a href="#" class="brand-logo center">Tools</a>
+      <a data-target="slide-out" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+      <a href="/" class="brand-logo center">Tools</a>
       <ul id="nav-mobile" class="left hide-on-med-and-down">
         <li><%= link_to 'Main', '/' %></li>
         <li><%= link_to 'Youtube Downloads', '/youtube' if current_user %></li>
@@ -24,15 +24,17 @@
   </nav>
   <ul id="slide-out" class="sidenav">
     <li><div class="user-view">
-      <a href="#name"><span class=" name"><%= current_user&.username %></span></a>
-      <a href="#email"><span class="email"><%= current_user&.email %></span></a>
+      <span class=" name"><%= current_user&.username %></span>
+      <span class="email"><%= current_user&.email %></span>
     </div></li>
     <li><a href="/youtube"><i class="material-icons">videocam</i>Youtube Video</a></li>
   </ul>
 
   <!-- end of new code -->
-
-  <div class="container">  <!-- newly added code -->
+  <div class="container">
+    <% flash.each do |message_type, message| %>
+      <%= javascript_tag "M.toast('#{message}', 4000)" %>
+    <% end %>
     <%= yield %>
   </div>                   <!-- newly added code -->
   </body>

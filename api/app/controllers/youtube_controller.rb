@@ -8,8 +8,12 @@ class YoutubeController < ApplicationController
   end
 
   def download
-    youtube_download = current_user.youtube_downloads.create(url: params[:url], is_audio: params[:is_audio])
-    YoutubeDownloadWorker.perform_async(youtube_download.id)
+    if params[:url].present?
+      youtube_download = current_user.youtube_downloads.create(url: params[:url], is_audio: params[:is_audio])
+      YoutubeDownloadWorker.perform_async(youtube_download.id)
+    else
+      flash.alert = "URL cannot be blank"
+    end
     redirect_to action: "index"
   end
 

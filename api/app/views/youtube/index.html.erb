@@ -1,25 +1,39 @@
-<%= form_tag("youtube/download", method: "post") do %>
-  <%= token_tag %>
-  <%= label_tag(:url, "Youtube URL:") %>
-  <%= text_field_tag(:url) %>
-  <%= check_box_tag 'is_audio' %>
-  <%= button_tag("Download", class: "waves-effect waves-light btn") %>
-<% end %>
+  <div class="section">
+    <h5>Submit a video to download</h5>
 
-<table>
-  <tr>
-    <th>Status</th>
-    <th>URL</th>
-    <th>Filename</th>
-  </tr>
-
-  <% @youtube_downloads.each do |youtube_dl| %>
-    <tr>
-      <td><%= youtube_dl.status %></td>
-      <td><%= youtube_dl.url %></td>
-      <td><%= youtube_dl.filename %></td>
-      <td><%= link_to('Download', get_path(youtube_dl.uid, youtube_dl.download_name)) if youtube_dl.filename %></td>
-      <td><%= link_to 'Delete', youtube_path(youtube_dl), :method => :delete %></td>
-    </tr>
-  <% end %>
-</table>
+    <%= form_tag("youtube/download", method: "post") do %>
+      <%= token_tag %>
+      <div class="row">
+        <div class="input-field col s12 m6">
+          <%= label_tag(:url, "URL:") %>
+          <%= text_field_tag(:url) %>
+        </div>
+        <div class="input-field col s12 m6">
+          <label>
+          <%= check_box_tag :is_audio %>
+          <span>Audio Only</span>
+        </label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
+          <%= button_tag("Download", class: "waves-effect waves-light btn") %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+  <div class="divider"></div>
+  <div class="section">
+    <h5>Download list</h5>
+    <table>
+      <% @youtube_downloads.order(created_at: :desc).each do |youtube_dl| %>
+        <tr>
+          <td><i class="material-icons green-text text-darken-4" title="<%= youtube_dl.error%>"><%= status_to_icon(youtube_dl.status) %></i></td>
+          <td>
+            <%= youtube_dl.filename ? link_to(youtube_dl.filename, get_path(youtube_dl.uid, youtube_dl.download_name) ) : youtube_dl.url %>
+          </td>
+          <td><%= link_to 'Delete', youtube_path(youtube_dl), method: :delete, class: "btn waves-effect waves-light red lighten-2" %></td>
+        </tr>
+      <% end %>
+    </table>
+  </div>
